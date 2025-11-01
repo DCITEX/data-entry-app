@@ -1,15 +1,20 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { TaskType, Difficulty, ProblemSet, GradingResult } from './types';
-import { generateProblem, generateFeedback, analyzeMistakes } from './services/geminiService';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import ProblemSelector from './components/ProblemSelector';
-import LoadingSpinner from './components/LoadingSpinner';
-import TaskDisplay from './components/TaskDisplay';
-import InputTable from './components/InputTable';
-import Timer from './components/Timer';
-import Results from './components/Results';
-import UserGuide from './components/UserGuide';
+import { TaskType, Difficulty, ProblemSet, GradingResult } from './src/assets/types';
+import { generateProblem, generateFeedback, analyzeMistakes } from './src/assets/services/geminiService';
+
+import Header from './src/assets/components/Header';
+
+import Footer from './src/assets/components/Footer';
+import ProblemSelector from './src/assets/components/ProblemSelector';
+//import LoadingSpinner from './components/LoadingSpinner';
+import LoadingSpinner from './src/assets/components/LoadingSpinner';
+
+import TaskDisplay from './src/assets/components/TaskDisplay';
+import InputTable from './src/assets/components/IuputTable';
+
+import Timer from './src/assets/components/Timer';
+import Results from './src/assets/components/Results';
+import UserGuide from './src/assets/components/UserGuide';
 
 type GameState = 'selecting' | 'generating' | 'typing' | 'results';
 

@@ -6,7 +6,6 @@
     <title>AI Data Entry Skill Trainer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* あなたの既存のstyleタグの内容はここに残します */
         @keyframes fadeIn {
           from { opacity: 0; }
           to { opacity: 1; }
@@ -29,9 +28,19 @@
             animation: fadeInDown 0.3s ease-out;
         }
     </style>
-  </head>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.27.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+</head>
   <body class="bg-slate-50 text-slate-800">
     <div id="root"></div>
-    <script type="module" src="/src/index.tsx"></script>
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>

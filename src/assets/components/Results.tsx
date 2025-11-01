@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { GradingResult } from '../types';
+import type { GradingResult } from '../types';
 
 interface ResultsProps {
     result: GradingResult;

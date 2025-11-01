@@ -1,11 +1,13 @@
-import { GoogleGenAI, Type } from "@google/genai";
-import { TaskType, Difficulty, ProblemSet, GradingResult } from '../types';
 
-if (!import.meta.env.VITE_API_KEY) {
+import { GoogleGenAI, Type } from "@google/genai";
+import { TaskType, Difficulty } from '../types';
+import type { ProblemSet, GradingResult } from '../types';
+
+if (!process.env.API_KEY) {
   throw new Error("API_KEY environment variable not set");
 }
 
-const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 const problemSchema = {
   type: Type.OBJECT,
@@ -66,6 +68,9 @@ export const generateProblem = async (taskType: TaskType, difficulty: Difficulty
     });
 
     const jsonString = response.text;
+    if (!jsonString) {
+        throw new Error("AI response was empty or invalid.");
+    }
     const parsedData = JSON.parse(jsonString);
 
     // Basic validation
@@ -121,7 +126,7 @@ export const generateFeedback = async (
       model: model,
       contents: prompt,
     });
-    return response.text.trim();
+    return response.text?.trim() ?? "AIからのフィードバックの生成に失敗しました。";
   } catch (error) {
     console.error("Error generating feedback with Gemini API:", error);
     throw new Error("Failed to generate AI feedback.");
@@ -173,7 +178,7 @@ export const analyzeMistakes = async (result: GradingResult): Promise<string> =>
       model: model,
       contents: prompt,
     });
-    return response.text.trim();
+    return response.text?.trim() ?? "ミスの傾向分析に失敗しました。";
   } catch (error) {
     console.error("Error analyzing mistakes with Gemini API:", error);
     throw new Error("Failed to generate mistake analysis.");

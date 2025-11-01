@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { TaskType, Difficulty, ProblemSet, GradingResult } from './src/assets/types';
+//import { TaskType, Difficulty, ProblemSet, GradingResult } from './src/assets/types';
+import { TaskType, Difficulty } from './src/assets/types';
+import type { ProblemSet, GradingResult } from './src/assets/types';
 import { generateProblem, generateFeedback, analyzeMistakes } from './src/assets/services/geminiService';
 
 import Header from './src/assets/components/Header';
@@ -7,7 +9,7 @@ import Header from './src/assets/components/Header';
 import Footer from './src/assets/components/Footer';
 import ProblemSelector from './src/assets/components/ProblemSelector';
 //import LoadingSpinner from './components/LoadingSpinner';
-import LoadingSpinner from './src/assets/components/LoadingSpinner';
+//import LoadingSpinner from './src/assets/components/LoadingSpinner';
 
 import TaskDisplay from './src/assets/components/TaskDisplay';
 import InputTable from './src/assets/components/IuputTable';
